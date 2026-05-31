@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 20px;
+    font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+    color: #253238;
+    background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.16), transparent 30%),
+        linear-gradient(135deg, #f7fbff 0%, #eef7f1 50%, #fff8ec 100%);
+}
+
+h2 {
+    width: min(1120px, 100%);
+    margin: 0 auto 24px;
+    color: #1f3f46;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0;
+}
+
+body > a {
+    display: block;
+    width: min(1120px, 100%);
+    margin: 0 auto 18px;
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    width: min(1120px, 100%);
+    margin: 0 auto 14px;
+    color: #48656b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.pagination-bottom {
+    margin-top: -2px;
+    justify-content: flex-end;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    border: 1px solid #c8d8d7;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: #237b75;
+    background: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-weight: 700;
+    transition:
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.pagination a:hover {
+    border-color: #237b75;
+    color: #ffffff;
+    background: #237b75;
+}
+
+.pagination select,
+.pagination input[type="text"],
+.pagination input[type="number"] {
+    min-height: 32px;
+    border: 1px solid #c8d8d7;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: #253238;
+    background: #ffffff;
+    font: inherit;
+}
+
+button,
+input[type="submit"] {
+    min-height: 40px;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font: inherit;
+    font-weight: 700;
+    color: #ffffff;
+    background: #237b75;
+    box-shadow: 0 10px 22px rgba(35, 123, 117, 0.18);
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #1d6863;
+    box-shadow: 0 12px 26px rgba(35, 123, 117, 0.26);
+    transform: translateY(-1px);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+button:focus-visible,
+input[type="submit"]:focus-visible {
+    outline: 3px solid rgba(59, 130, 246, 0.34);
+    outline-offset: 3px;
+}
+
+table {
+    width: min(1120px, 100%);
+    margin: 0 auto 18px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid rgba(31, 63, 70, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 22px 60px rgba(31, 63, 70, 0.12);
+}
+
+th,
+td {
+    border-bottom: 1px solid #dce8e6;
+    padding: 14px 16px;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    color: #315059;
+    background: #eef7f1;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+tr:nth-child(even) td {
+    background: rgba(247, 251, 255, 0.78);
+}
+
+tr:hover td {
+    background: #fff8ec;
+}
+
+td form,
+td FORM {
+    display: inline-block;
+    margin: 4px 6px 4px 0 !important;
+}
+
+td input[type="submit"] {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+td form:last-child input[type="submit"],
+td FORM:last-child input[type="submit"] {
+    background: #c65a46;
+}
+
+td form:last-child input[type="submit"]:hover,
+td FORM:last-child input[type="submit"]:hover {
+    background: #ad4938;
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 32px 14px;
+    }
+
+    h2 {
+        font-size: 26px;
+        text-align: left;
+    }
+
+    body > a button {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: flex-start;
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .pagination a {
+        min-height: 34px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 12px;
+    }
+}
