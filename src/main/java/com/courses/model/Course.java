@@ -1,9 +1,12 @@
 package com.courses.model;
 
-import java.sql.Date;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,13 +34,14 @@ public class Course {
 	@Column(name = "outline")
 	private String outline;
 	@Column(name = "listed_at")
-	private Date listedAt;
+	private LocalDateTime listedAt;
 	@Column(name = "delisted_at")
-	private Date delistedAt;
+	private LocalDateTime delistedAt;
+	@Enumerated(EnumType.STRING)
 	@Column(name = "delist_reason")
-	private String delistReason;
+	private DelistReason delistReason;
 	@Column(name = "course_status")
-	private String courseStatus;
+	private Byte courseStatus;
 	@Column(name = "save_count")
 	private Integer saveCount;
 	@Column(name = "star_count")
@@ -47,11 +51,11 @@ public class Course {
 	@Column(name = "comment_count")
 	private Integer commentCount;
 	@Column(name = "psych_discount")
-	private Double psychDiscount;
+	private BigDecimal psychDiscount;
 	@Column(name = "discount_start")
-	private Date discountStart;
+	private LocalDateTime discountStart;
 	@Column(name = "discount_end")
-	private Date discountEnd;
+	private LocalDateTime discountEnd;
 	@Column(name = "price")
 	private Integer price;
 	
@@ -108,28 +112,52 @@ public class Course {
 	public void setOutline(String outline) {
 		this.outline = outline;
 	}
-	public Date getListedAt() {
+	public LocalDateTime getListedAt() {
 		return listedAt;
 	}
-	public void setListedAt(Date listedAt) {
+	public void setListedAt(LocalDateTime listedAt) {
 		this.listedAt = listedAt;
 	}
-	public Date getDelistedAt() {
+	public LocalDateTime getDelistedAt() {
 		return delistedAt;
 	}
-	public void setDelistedAt(Date delistedAt) {
+	public void setDelistedAt(LocalDateTime delistedAt) {
 		this.delistedAt = delistedAt;
 	}
-	public String getDelistReason() {
+	public DelistReason getDelistReason() {
 		return delistReason;
 	}
-	public void setDelistReason(String delistReason) {
+	public void setDelistReason(DelistReason delistReason) {
 		this.delistReason = delistReason;
 	}
-	public String getCourseStatus() {
+	public Byte getCourseStatus() {
 		return courseStatus;
 	}
-	public void setCourseStatus(String courseStatus) {
+	public String getCourseStatusMsg() {
+		courseStatus = getCourseStatus();
+		String courseStatusMsg = "";
+		switch(courseStatus) {
+		case 1:
+			courseStatusMsg = "待審核";
+			break;
+		case 2:
+			courseStatusMsg = "審核成功";
+			break;
+		case 3:
+			courseStatusMsg = "審核失敗";
+			break;
+		case 4:
+			courseStatusMsg = "已上架";
+			break;
+		case 5:
+			courseStatusMsg = "已下架";
+			break;
+		default:
+			courseStatusMsg = "草稿";
+	}
+		return courseStatusMsg;
+	}
+	public void setCourseStatus(Byte courseStatus) {
 		this.courseStatus = courseStatus;
 	}
 	public Integer getSaveCount() {
@@ -156,22 +184,22 @@ public class Course {
 	public void setCommentCount(Integer commentCount) {
 		this.commentCount = commentCount;
 	}
-	public Double getPsychDiscount() {
+	public BigDecimal getPsychDiscount() {
 		return psychDiscount;
 	}
-	public void setPsychDiscount(Double psychDiscount) {
+	public void setPsychDiscount(BigDecimal psychDiscount) {
 		this.psychDiscount = psychDiscount;
 	}
-	public Date getDiscountStart() {
+	public LocalDateTime getDiscountStart() {
 		return discountStart;
 	}
-	public void setDiscountStart(Date discountStart) {
+	public void setDiscountStart(LocalDateTime discountStart) {
 		this.discountStart = discountStart;
 	}
-	public Date getDiscountEnd() {
+	public LocalDateTime getDiscountEnd() {
 		return discountEnd;
 	}
-	public void setDiscountEnd(Date discountEnd) {
+	public void setDiscountEnd(LocalDateTime discountEnd) {
 		this.discountEnd = discountEnd;
 	}
 	public Integer getPrice() {

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>優惠券修改頁面</title>
-<link rel="stylesheet" href="css/updateCoupon1.css">
+<link rel="stylesheet" href="./css/updateCoupon.css">
 </head>
 <body>
 <h1>優惠券修改頁面</h1>

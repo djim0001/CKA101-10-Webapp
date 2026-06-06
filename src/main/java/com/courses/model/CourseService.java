@@ -1,6 +1,5 @@
 package com.courses.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class CourseService {
@@ -11,31 +10,68 @@ public class CourseService {
 	}
 	
 	public Course addCourse(
-			String courseName, Integer psychId, Integer adminId, Integer courseCatId, 
-			String videoSrc, String videoSrcPre, String outline, Date listedAt, 
-			Date delistedAt, String delistReason, String courseStatus, Integer saveCount, 
-			Integer starCount, Integer reviewCount, Integer commentCount, 
-			Double psychDiscount, Date discountStart, Date discountEnd, Integer price
+			String courseName, Integer psychId, Integer courseCatId, 
+			String videoSrc, String videoSrcPre, String outline, 
+			Byte courseStatus, Integer saveCount, Integer starCount, 
+			Integer reviewCount, Integer commentCount, Integer price
 			) {
 		Course course = new Course();
-		
-		
-		
-		
+		course.setCourseName(courseName);
+		course.setPsychId(psychId);
+		course.setCourseCatId(courseCatId);
+		course.setVideoSrc(videoSrc);
+		course.setVideoSrcPre(videoSrcPre);
+		course.setOutline(outline);
+		course.setCourseStatus(courseStatus);
+		course.setSaveCount(saveCount);
+		course.setStarCount(starCount);
+		course.setReviewCount(reviewCount);
+		course.setCommentCount(commentCount);
+		course.setPrice(price);
+		dao.insert(course);
 		
 		return course;
 	}
 	
-	public Course updateCourse() {
-		return null;
-	}
-	
-	public void deleteCourse() {
+	public Course updateCourse(
+			String courseName, Integer psychId, Integer courseCatId, 
+			String videoSrc, String videoSrcPre, String outline, 
+			Byte courseStatus, Integer saveCount, Integer starCount, 
+			Integer reviewCount, Integer commentCount, Integer price
+			) {
+		Course course = new Course();
+		course.setCourseName(courseName);
+		course.setPsychId(psychId);
+		course.setCourseCatId(courseCatId);
+		course.setVideoSrc(videoSrc);
+		course.setVideoSrcPre(videoSrcPre);
+		course.setOutline(outline);
+		course.setCourseStatus(courseStatus);
+		course.setSaveCount(saveCount);
+		course.setStarCount(starCount);
+		course.setReviewCount(reviewCount);
+		course.setCommentCount(commentCount);
+		course.setPrice(price);
+		dao.update(course);
 		
+		return course;
 	}
 	
-	public Course getOneCourse() {
-		return null;
+	public Course checkCourse(Integer courseId, Integer adminId, Byte checkNum) {
+		Course course = getOneCourse(courseId);
+		course.setAdminId(adminId);
+		course.setCourseStatus(checkNum);
+		dao.update(course);
+		
+		return course;
+	}
+	
+	public void deleteCourse(Integer courseId) {
+		dao.delete(courseId);
+	}
+	
+	public Course getOneCourse(Integer courseId) {
+		return dao.findByPrimaryKey(courseId);
 	}
 	
 	public List<Course> getAll(){

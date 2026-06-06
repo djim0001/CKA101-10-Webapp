@@ -18,7 +18,8 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 <!-- 		預先註冊 Entity 的類別名 -->
-		<mapping class="com.courses.model.Courses"/> 
+		<mapping class="com.courses.model.Course"/> 
+		<mapping class="com.coupons.model.CouponVO"/> 
 		
 	</session-factory>
 </hibernate-configuration>

@@ -1,12 +1,30 @@
 package com.coupons.model;
 
-public class CouponVO {
+import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "coupons")
+public class CouponVO {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "coupon_id")
 	private Integer couponId;
+	@Column(name = "coupon_name")
 	private String couponName;
+	@Column(name = "discount_duration")
 	private Integer discountDuration;
+	@Column(name = "trigger_threshold")
 	private Integer triggerThreshold;
-	private Double discount;
+	@Column(name = "discount")
+	private BigDecimal discount;
+	@Column(name = "discount_limit")
 	private Integer discountLimit;
 
 	public Integer getCouponId() {
@@ -41,11 +59,11 @@ public class CouponVO {
 		this.triggerThreshold = triggerThreshold;
 	}
 
-	public Double getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Double discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
 

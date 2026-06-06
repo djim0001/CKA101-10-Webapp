@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  background: #f4f7f6;
+  color: #24312f;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h2 {
+  width: min(1120px, 100%);
+  margin: 0 auto 20px;
+  color: #1f6f63;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+a {
+  color: #1f6f63;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #18584f;
+}
+
+body > a,
+.pagination,
+table {
+  width: min(1120px, 100%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body > a {
+  display: block;
+  margin-bottom: 18px;
+}
+
+button,
+input[type="submit"] {
+  min-height: 38px;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 15px;
+  background: #1f6f63;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: #18584f;
+  box-shadow: 0 8px 18px rgba(31, 111, 99, 0.18);
+  transform: translateY(-1px);
+}
+
+.pagination {
+  border: 1px solid #d9e5e1;
+  background: #ffffff;
+  color: #40524e;
+  box-shadow: 0 12px 28px rgba(36, 49, 47, 0.06);
+}
+
+.pagination-top {
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: 10px 10px 0 0;
+}
+
+.pagination-bottom {
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-radius: 0 0 10px 10px;
+}
+
+table {
+  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid #d9e5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(36, 49, 47, 0.08);
+}
+
+th,
+td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #edf2f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: #e8f1ee;
+  color: #27423d;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+tr:nth-child(even) td {
+  background: #fbfcfc;
+}
+
+td:last-child {
+  min-width: 150px;
+}
+
+td form {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+select {
+  min-height: 38px;
+  border: 1px solid #cbd9d5;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #ffffff;
+  color: #24312f;
+  font: inherit;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    padding: 11px 12px;
+  }
+}

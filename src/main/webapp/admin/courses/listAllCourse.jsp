@@ -2,21 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.courses.model.*"%>
-
 <%
 	CourseService courseSvc = new CourseService();
     List<Course> list = courseSvc.getAll();
     pageContext.setAttribute("list", list);
-%> 
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>課程一覽</title>
+<title>課程一覽-員工</title>
+<style>
+table{
+	font-size: 20px;
+}
+</style>
 </head>
 <body>
 
-	<h2>全部課程</h2>
+	<h1>全部課程</h1>
 <!-- 	<a href='selectCoupon.jsp'><button>查詢優惠券頁面</button></a> -->
 	<br><br>
 	
@@ -27,60 +31,31 @@
 		<tr>
 			<th>課程名稱</th>
 			<th>心理師編號</th>
-			<th>員工編號</th>
 			<th>課程分類編號</th>
-			<th>影片路徑</th>
-			<th>預覽影片路徑</th>
-			<th>課程大綱</th>
-			<th>上架時間</th>
-			<th>下架時間</th>
-			<th>下架原因</th>
 			<th>課程狀態</th>
-			<th>收藏次數</th>
-			<th>總星數</th>
-			<th>評價次數</th>
-			<th>提問次數</th>
 			<th>心理師折扣</th>
-			<th>折扣開始時間</th>
-			<th>折扣結束時間</th>
 			<th>課程定價</th>
+			<th>選項</th>
 		</tr>
 		<c:forEach var="course" items="${list}">
-			<tr>
-				<td>${course.courseName}</td>
-				<td>${course.psychId}</td>
-				<td>${course.adminId}</td>
-				<td>${course.courseCatId}</td>
-				<td>${course.videoSrc}</td>
-				<td>${course.videoSrcPre}</td>
-				<td>${course.outline}</td>
-				<td>${course.listedAt}</td>
-				<td>${course.delistedAt}</td>
-				<td>${course.delistReason}</td>
-				<td>${course.courseStatus}</td>
-				<td>${course.saveCount}</td>
-				<td>${course.starCount}</td>
-				<td>${course.reviewCount}</td>
-				<td>${course.commentCount}</td>
-				<td>${course.psychDiscount}</td>
-				<td>${course.discountStart}</td>
-				<td>${course.discountEnd}</td>
-				<td>${course.price}</td>
-				
-				
-				<td>
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/course/course.do" style="margin-bottom: 0px;">
-					     <input type="submit" value="修改">
-					     <input type="hidden" name="courseId"  value="${course.courseId}">
-					     <input type="hidden" name="action"	value="getOne_For_Update">
-					</FORM>
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/course/course.do" style="margin-bottom: 0px;">
-					     <input type="submit" value="刪除">
-					     <input type="hidden" name="courseId"  value="${course.courseId}">
-					     <input type="hidden" name="action"	value="delete">
-					</FORM>
-				</td>
-			</tr>
+			<c:if test="${course.courseStatus != 0}">
+				<tr>
+					<td>${course.courseName}</td>
+					<td>${course.psychId}</td>
+					<td>${course.courseCatId}</td>
+					<td>${course.courseStatusMsg}</td>
+					<td>${course.psychDiscount == null ? "無" : course.psychDiscount}</td>
+					<td>${course.price}</td>
+					
+					<td>
+						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/courses/course.do" style="margin-bottom: 0px;">
+						     <input type="submit" value="瀏覽">
+						     <input type="hidden" name="courseId"  value="${course.courseId}">
+						     <input type="hidden" name="action"	value="select_this">
+						</FORM>
+					</td>
+				</tr>
+			</c:if>
 		</c:forEach>
 		
 	</table>

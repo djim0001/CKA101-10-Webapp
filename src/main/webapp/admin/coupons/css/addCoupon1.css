@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  background: #f4f7f6;
+  color: #24312f;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1 {
+  width: min(920px, 100%);
+  margin: 0 auto 20px;
+  color: #1f6f63;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+a {
+  color: #1f6f63;
+  text-decoration: none;
+}
+
+a button,
+input[type="submit"] {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  background: #1f6f63;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+a button:hover,
+input[type="submit"]:hover {
+  background: #18584f;
+  box-shadow: 0 8px 18px rgba(31, 111, 99, 0.18);
+  transform: translateY(-1px);
+}
+
+form {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid #d9e5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(36, 49, 47, 0.08);
+}
+
+body > a {
+  display: block;
+  width: min(920px, 100%);
+  margin: 0 auto 18px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #edf2f0;
+}
+
+td:first-child {
+  width: 28%;
+  color: #40524e;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="TEXT"] {
+  width: 100%;
+  max-width: 420px;
+  min-height: 40px;
+  border: 1px solid #cbd9d5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #24312f;
+  font: inherit;
+}
+
+input[type="text"]:focus,
+input[type="TEXT"]:focus {
+  border-color: #1f6f63;
+  box-shadow: 0 0 0 3px rgba(31, 111, 99, 0.12);
+  outline: none;
+}
+
+font[color="red"] {
+  color: #c2413a;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  form {
+    padding: 18px;
+  }
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  td {
+    padding: 8px 0;
+    border-bottom: 0;
+  }
+
+  td:first-child {
+    width: 100%;
+  }
+}

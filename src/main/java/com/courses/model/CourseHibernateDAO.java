@@ -3,61 +3,47 @@ package com.courses.model;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import util.HibernateUtil;
 
 public class CourseHibernateDAO implements CourseDAO_interface{
 
-	private static final String INSERT = "";
-	private static final String GET_ALL = "FROM Course";
-	private static final String GET_ONE = "";
-	private static final String DELETE = "";
-	private static final String UPDATE = 
-			"UPDATE Course "
-			+ "SET courseName = "
-			+ "WHERE CourseId";
+	private SessionFactory factory;
+	public CourseHibernateDAO() {
+		factory = HibernateUtil.getSessionFactory();
+	}
+	private Session getSession() {
+		return factory.getCurrentSession();
+	}
 	
 	@Override
-	public void insert(Course Course) {
-		// TODO Auto-generated method stub
-		
+	public void insert(Course course) {
+		getSession().persist(course);		
 	}
 
 	@Override
-	public void update(Course Course) {
-		// TODO Auto-generated method stub
+	public void update(Course course) {
+		getSession().merge(course);
 		
 	}
 
 	@Override
 	public void delete(Integer courseId) {
-		// TODO Auto-generated method stub
-		
+		Course course = getSession().find(Course.class, courseId);
+		if (course != null) {
+			getSession().remove(course);
+		}		
 	}
 
 	@Override
 	public Course findByPrimaryKey(Integer courseId) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Course.class, courseId);
 	}
 
 	@Override
 	public List<Course> getAll() {
-		// TODO Auto-generated method stub
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<Course> courseList = null;
-		try {
-			session.beginTransaction();
-			courseList = session.createQuery(GET_ALL, Course.class).getResultList();
-			
-//			session.getTransaction().commit();
-		}catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		} finally {
-			HibernateUtil.shutdown();
-		}
-		return courseList;
+		return getSession().createQuery("from Course", Course.class).getResultList();
 	}
 
 }

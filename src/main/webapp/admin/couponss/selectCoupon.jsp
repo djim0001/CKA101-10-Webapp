@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>優惠券頁面</title>
-		<link rel="stylesheet" href="css/selectCoupon1.css">
+		<link rel="stylesheet" href="./css/selectCoupon.css">
 	</head>
 	<body>
 		<h1>搜尋優惠券頁面</h1>

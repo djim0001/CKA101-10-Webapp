@@ -32,9 +32,7 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 	public void insert(CouponVO couponVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
 		try {
-
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
@@ -42,20 +40,16 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 			pstmt.setString(1, couponVO.getCouponName());
 			pstmt.setInt(2, couponVO.getDiscountDuration());
 			pstmt.setInt(3, couponVO.getTriggerThreshold());
-			pstmt.setDouble(4, couponVO.getDiscount());
-			pstmt.setDouble(5, couponVO.getDiscountLimit());
+			pstmt.setBigDecimal(4, couponVO.getDiscount());
+			pstmt.setInt(5, couponVO.getDiscountLimit());
 
 			pstmt.executeUpdate();
-
-			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "
 					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
-			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -72,15 +66,12 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 				}
 			}
 		}
-		
 	}
 	@Override
 	public void update(CouponVO couponVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
 		try {
-
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
@@ -88,21 +79,18 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 			pstmt.setString(1, couponVO.getCouponName());
 			pstmt.setInt(2, couponVO.getDiscountDuration());
 			pstmt.setInt(3,couponVO.getTriggerThreshold());
-			pstmt.setDouble(4, couponVO.getDiscount());
+			pstmt.setBigDecimal(4, couponVO.getDiscount());
 			pstmt.setDouble(5, couponVO.getDiscountLimit());
 			pstmt.setInt(6, couponVO.getCouponId());
 
 			pstmt.executeUpdate();
 
-			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "
 					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
-			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -126,9 +114,7 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 	public void delete(Integer coupon_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
 		try {
-
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(DELETE);
@@ -137,15 +123,12 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 
 			pstmt.executeUpdate();
 
-			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "
 					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
-			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -169,9 +152,7 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		try {
-
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(GET_ONE_STMT);
@@ -181,26 +162,21 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo 也稱為 Domain objects
 				couponVO = new CouponVO();
 				couponVO.setCouponId(rs.getInt("coupon_id"));
 				couponVO.setCouponName(rs.getString("coupon_name"));
 				couponVO.setDiscountDuration(rs.getInt("discount_duration"));
 				couponVO.setTriggerThreshold(rs.getInt("trigger_threshold"));
-				couponVO.setDiscount(rs.getDouble("discount"));
-				couponVO.setDiscountLimit(rs.getInt("discount_limit"));
-				
+				couponVO.setDiscount(rs.getBigDecimal("discount"));
+				couponVO.setDiscountLimit(rs.getInt("discount_limit"));			
 			}
 
-			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "
 					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
-			// Clean up JDBC resources
 		} finally {
 			if (rs != null) {
 				try {
@@ -234,35 +210,29 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		try {
-
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO 也稱為 Domain objects
 				couponVO = new CouponVO();
 				couponVO.setCouponId(rs.getInt("coupon_id"));
 				couponVO.setCouponName(rs.getString("coupon_name"));
 				couponVO.setDiscountDuration(rs.getInt("discount_duration"));
 				couponVO.setTriggerThreshold(rs.getInt("trigger_threshold"));
-				couponVO.setDiscount(rs.getDouble("discount"));
+				couponVO.setDiscount(rs.getBigDecimal("discount"));
 				couponVO.setDiscountLimit(rs.getInt("discount_limit"));
-				list.add(couponVO); // Store the row in the list
+				list.add(couponVO); 
 			}
 
-			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "
 					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
-			// Clean up JDBC resources
 		} finally {
 			if (rs != null) {
 				try {
@@ -288,11 +258,5 @@ public class CouponJDBCDAO implements CouponDAO_interface{
 		}
 		return list;
 	}
-	
-	
-
-	
-	
-	
 	
 }

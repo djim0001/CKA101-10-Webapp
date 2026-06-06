@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>優惠券資料</title>
-<link rel="stylesheet" href="css/listOneCoupon1.css">
+<link rel="stylesheet" href="./css/listOneCoupon.css">
 <style>
 	table {
 		width: 600px;
@@ -20,7 +20,6 @@
 	    padding: 5px;
 	    text-align: center;
   	}
-  	
 </style>
 </head>
 <body>
@@ -45,6 +44,11 @@
 				     <input type="submit" value="修改">
 				     <input type="hidden" name="couponId"  value="${couponVO.couponId}">
 				     <input type="hidden" name="action"	value="getOne_For_Update">
+				</FORM>
+				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/coupons/coupon.do" style="margin-bottom: 0px;">
+				     <input type="submit" value="刪除">
+				     <input type="hidden" name="couponId"  value="${couponVO.couponId}">
+				     <input type="hidden" name="action"	value="delete">
 				</FORM>
 			</th>
 		</tr>

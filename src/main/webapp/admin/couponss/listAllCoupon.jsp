@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>全部優惠券頁面</title> 
-<link rel="stylesheet" href="css/listAllCoupon1.css">
+<link rel="stylesheet" href="css/listAllCoupon.css">
 
 </head>
 <body>
