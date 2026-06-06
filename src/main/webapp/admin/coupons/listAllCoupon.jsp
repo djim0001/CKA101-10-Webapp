@@ -35,7 +35,7 @@
 		<c:forEach var="couponVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 			<tr>
 				<td>${couponVO.couponName}</td>
-				<td>${couponVO.discountDuration}</td>
+				<td>${(couponVO.discountDuration = "") ? 0 : couponVO.discountDuration}</td>
 				<td>${couponVO.triggerThreshold}</td>
 				<td>${couponVO.discount}</td>
 				<td>${couponVO.discountLimit}</td>

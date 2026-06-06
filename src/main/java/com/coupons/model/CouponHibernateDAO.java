@@ -29,7 +29,7 @@ public class CouponHibernateDAO implements CouponDAO_interface{
 
 	@Override
 	public void delete(Integer couponId) {
-		CouponVO coupon = getSession().find(CouponVO.class, couponId);
+		CouponVO coupon = getSession().get(CouponVO.class, couponId);
 		if (coupon != null) {
 			getSession().remove(coupon);
 		}		
