@@ -35,7 +35,7 @@
 		<c:forEach var="couponVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 			<tr>
 				<td>${couponVO.couponName}</td>
-				<td>${(couponVO.discountDuration = "") ? 0 : couponVO.discountDuration}</td>
+				<td>${couponVO.discountDuration}</td>
 				<td>${couponVO.triggerThreshold}</td>
 				<td>${couponVO.discount}</td>
 				<td>${couponVO.discountLimit}</td>
@@ -45,11 +45,11 @@
 					     <input type="hidden" name="couponId"  value="${couponVO.couponId}">
 					     <input type="hidden" name="action"	value="getOne_For_Update">
 					</FORM>
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/coupons/coupon.do" style="margin-bottom: 0px;">
-					     <input type="submit" value="刪除">
-					     <input type="hidden" name="couponId"  value="${couponVO.couponId}">
-					     <input type="hidden" name="action"	value="delete">
-					</FORM>
+<%-- 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/admin/coupons/coupon.do" style="margin-bottom: 0px;"> --%>
+<!-- 					     <input type="submit" value="刪除"> -->
+<%-- 					     <input type="hidden" name="couponId"  value="${couponVO.couponId}"> --%>
+<!-- 					     <input type="hidden" name="action"	value="delete"> -->
+<!-- 					</FORM> -->
 				</td>
 			</tr>
 		</c:forEach>

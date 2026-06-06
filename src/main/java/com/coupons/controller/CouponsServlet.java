@@ -93,7 +93,7 @@ public class CouponsServlet extends HttpServlet{
 				discountDuration = 0;
 				errorMsgs.put("discountDuration", "優惠效期請填數字");
 			}
-			if (discountDuration < 0) {
+			if (discountDuration <= 0) {
 				errorMsgs.put("discountDuration", "優惠效期請填大於 0 的數字");
 			}
 			
